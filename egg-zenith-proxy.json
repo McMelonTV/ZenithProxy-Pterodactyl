@@ -4,7 +4,7 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2025-03-28T03:49:00+01:00",
+    "exported_at": "2025-03-28T04:00:48+01:00",
     "name": "ZenithProxy",
     "author": "mel@boykiss.ing",
     "description": "https:\/\/github.com\/rfresh2\/ZenithProxy",
@@ -22,7 +22,7 @@
     },
     "scripts": {
         "installation": {
-            "script": "# Change working directory\r\ncd \/mnt\/server\r\n\r\n# Determine architecture and download respective ZenithProxy launcher bin zip\r\narch=$([ \"$(uname -m)\" = \"aarch64\" ] && echo \"aarch64\" || echo \"amd64\")\r\nwget -O launcher.zip https:\/\/github.com\/rfresh2\/ZenithProxy\/releases\/download\/launcher-v3\/ZenithProxy-launcher-linux-${arch}.zip\r\n\r\n# Unzip launcher bin zip\r\nunzip launcher.zip\r\n\r\n# Delete launcher bin zip\r\nrm launcher.zip\r\n\r\n# Create the launch_config.json file to prevent running the ZenithProxy installer and config.json to prevent errors from ptero creating an invalid json file\r\necho \"{}\" > launch_config.json\r\necho \"{}\" > config.json\r\n\r\necho -e \"-----------------------------------------\"\r\necho -e \"ZenithProxy Installation completed...\"\r\necho -e \"-----------------------------------------\"\r\nexit 0",
+            "script": "# Change working directory\r\ncd \/mnt\/server\r\n\r\n# Determine architecture and download respective ZenithProxy launcher bin zip\r\narch=$([ \"$(uname -m)\" = \"aarch64\" ] && echo \"aarch64\" || echo \"amd64\")\r\nwget -O launcher.zip https:\/\/github.com\/rfresh2\/ZenithProxy\/releases\/download\/launcher-v3\/ZenithProxy-launcher-linux-${arch}.zip\r\n\r\n# Unzip launcher bin zip\r\nunzip launcher.zip\r\n\r\n# Delete launcher bin zip\r\nrm launcher.zip\r\n\r\n# Create the launch_config.json file to prevent running the ZenithProxy installer and config.json to prevent errors from ptero creating an invalid json file\r\necho \"{\\\"release_channel\\\": \\\"linux.1.21.0\\\"}\" > launch_config.json\r\necho \"{}\" > config.json\r\n\r\necho -e \"-----------------------------------------\"\r\necho -e \"ZenithProxy Installation completed...\"\r\necho -e \"-----------------------------------------\"\r\nexit 0",
             "container": "ghcr.io\/parkervcp\/installers:alpine",
             "entrypoint": "ash"
         }
