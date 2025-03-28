@@ -10,7 +10,7 @@
     "description": "https://github.com/rfresh2/ZenithProxy",
     "features": null,
     "docker_images": {
-        "ghcr.io\/McMelonTV\/zenith_3.0": "ghcr.io\/McMelonTV\/zenith_3.0"
+        "ghcr.io\/mcmelontv\/zenith_3.0": "ghcr.io\/mcmelontv\/zenith_3.0"
     },
     "file_denylist": [],
     "startup": ".\/launch",
