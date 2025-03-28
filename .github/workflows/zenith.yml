@@ -39,4 +39,4 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            ghcr.io/veslydev/zenith_${{ matrix.tag }}
+            ghcr.io/McMelonTV/zenith_${{ matrix.tag }}

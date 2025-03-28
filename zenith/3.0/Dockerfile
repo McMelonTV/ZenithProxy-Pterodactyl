@@ -1,6 +1,6 @@
 FROM        --platform=$TARGETOS/$TARGETARCH  eclipse-temurin:21-jdk
 
-LABEL       author="Veslys" maintainer="vesly@femboy.tr"
+LABEL       author="Veslys, Mel" maintainer="mel@boykiss.ing"
 
 RUN apt update && apt install -y wget apt-transport-https gpg 
 RUN         apt update \
