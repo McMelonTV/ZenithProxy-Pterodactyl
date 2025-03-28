@@ -4,7 +4,7 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2025-03-28T03:42:36+01:00",
+    "exported_at": "2025-03-28T03:49:00+01:00",
     "name": "ZenithProxy",
     "author": "mel@boykiss.ing",
     "description": "https:\/\/github.com\/rfresh2\/ZenithProxy",
@@ -65,7 +65,7 @@
             "default_value": "",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "string",
+            "rules": "nullable|string",
             "field_type": "text"
         },
         {
@@ -75,7 +75,7 @@
             "default_value": "",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "string",
+            "rules": "nullable|string",
             "field_type": "text"
         },
         {
@@ -135,7 +135,7 @@
             "default_value": "",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "string",
+            "rules": "nullable|string",
             "field_type": "text"
         },
         {
@@ -145,7 +145,7 @@
             "default_value": "",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "string",
+            "rules": "nullable|string",
             "field_type": "text"
         },
         {
@@ -155,7 +155,7 @@
             "default_value": "",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "string",
+            "rules": "nullable|string",
             "field_type": "text"
         },
         {
@@ -165,7 +165,7 @@
             "default_value": "",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "string",
+            "rules": "nullable|string",
             "field_type": "text"
         },
         {
@@ -195,7 +195,7 @@
             "default_value": "",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "string",
+            "rules": "nullable|string",
             "field_type": "text"
         }
     ]
