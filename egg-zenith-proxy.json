@@ -1,0 +1,202 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2025-03-28T03:42:36+01:00",
+    "name": "ZenithProxy",
+    "author": "mel@boykiss.ing",
+    "description": "https:\/\/github.com\/rfresh2\/ZenithProxy",
+    "features": null,
+    "docker_images": {
+        "ghcr.io\/mcmelontv\/zenith_3.0": "ghcr.io\/mcmelontv\/zenith_3.0"
+    },
+    "file_denylist": [],
+    "startup": ".\/launch",
+    "config": {
+        "files": "{\r\n    \"config.json\": {\r\n        \"parser\": \"json\",\r\n        \"find\": {\r\n            \"server.bind.address\": \"0.0.0.0\",\r\n            \"server.bind.port\": \"{{server.build.default.port}}\",\r\n            \"client.connectionProxy.enabled\": \"{{env.client_connectionProxy_enabled}}\",\r\n            \"client.connectionProxy.host\": \"{{env.client_connectionProxy_host}}\",\r\n            \"client.connectionProxy.port\": \"{{env.client_connectionProxy_port}}\",\r\n            \"client.connectionProxy.user\": \"{{env.client_connectionProxy_user}}\",\r\n            \"client.connectionProxy.password\": \"{{env.client_connectionProxy_password}}\",\r\n            \"client.connectionProxy.type\": \"{{env.client_connectionProxy_type}}\",\r\n            \"client.server.address\": \"{{env.client_server_address}}\",\r\n            \"client.server.port\": \"{{env.client_server_port}}\",\r\n            \"client.bindAddress\": \"{{env.client_bindAddress}}\",\r\n            \"discord.enable\": \"{{env.discord_enable}}\",\r\n            \"discord.token\": \"{{env.discord_token}}\",\r\n            \"discord.channelId\": \"{{env.discord_channelId}}\",\r\n            \"discord.accountOwnerRoleId\": \"{{env.discord_accountOwnerRoleId}}\",\r\n            \"discord.notificationMentionRoleId\": \"{{env.discord_notificationMentionRoleId}}\",\r\n            \"discord.prefix\": \"{{env.discord_prefix}}\",\r\n            \"discord.chatRelay.enable\": \"{{env.discord_chatRelay_enable}}\",\r\n            \"discord.chatRelay.channelId\": \"{{env.discord_chatRelay_channelId}}\"\r\n        }\r\n    }\r\n}",
+        "startup": "{\r\n    \"done\": \"[Server] [INFO] Server started.\"\r\n}",
+        "logs": "{}",
+        "stop": "^^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "# Change working directory\r\ncd \/mnt\/server\r\n\r\n# Determine architecture and download respective ZenithProxy launcher bin zip\r\narch=$([ \"$(uname -m)\" = \"aarch64\" ] && echo \"aarch64\" || echo \"amd64\")\r\nwget -O launcher.zip https:\/\/github.com\/rfresh2\/ZenithProxy\/releases\/download\/launcher-v3\/ZenithProxy-launcher-linux-${arch}.zip\r\n\r\n# Unzip launcher bin zip\r\nunzip launcher.zip\r\n\r\n# Delete launcher bin zip\r\nrm launcher.zip\r\n\r\n# Create the launch_config.json file to prevent running the ZenithProxy installer and config.json to prevent errors from ptero creating an invalid json file\r\necho \"{}\" > launch_config.json\r\necho \"{}\" > config.json\r\n\r\necho -e \"-----------------------------------------\"\r\necho -e \"ZenithProxy Installation completed...\"\r\necho -e \"-----------------------------------------\"\r\nexit 0",
+            "container": "ghcr.io\/parkervcp\/installers:alpine",
+            "entrypoint": "ash"
+        }
+    },
+    "variables": [
+        {
+            "name": "client.connectionProxy.enabled",
+            "description": "Whether or not to enable connecting to the destination server through a proxy. Requires further configuration.",
+            "env_variable": "client_connectionProxy_enabled",
+            "default_value": "false",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        },
+        {
+            "name": "client.connectionProxy.host",
+            "description": "",
+            "env_variable": "client_connectionProxy_host",
+            "default_value": "127.0.0.1",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|ipv4",
+            "field_type": "text"
+        },
+        {
+            "name": "client.connectionProxy.port",
+            "description": "",
+            "env_variable": "client_connectionProxy_port",
+            "default_value": "7890",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer|min:1|max:65535",
+            "field_type": "text"
+        },
+        {
+            "name": "client.connectionProxy.user",
+            "description": "",
+            "env_variable": "client_connectionProxy_user",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "string",
+            "field_type": "text"
+        },
+        {
+            "name": "client.connectionProxy.password",
+            "description": "",
+            "env_variable": "client_connectionProxy_password",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "string",
+            "field_type": "text"
+        },
+        {
+            "name": "client.connectionProxy.type",
+            "description": "",
+            "env_variable": "client_connectionProxy_type",
+            "default_value": "SOCKS5",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:SOCKS5,SOCKS4,HTTP",
+            "field_type": "text"
+        },
+        {
+            "name": "client.server.address",
+            "description": "The address of the destination server.",
+            "env_variable": "client_server_address",
+            "default_value": "connect.2b2t.org",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string",
+            "field_type": "text"
+        },
+        {
+            "name": "client.server.port",
+            "description": "The port of the destination server.",
+            "env_variable": "client_server_port",
+            "default_value": "25565",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|integer|min:1|max:65535",
+            "field_type": "text"
+        },
+        {
+            "name": "client.bindAddress",
+            "description": "The address the proxy should be connecting to the destination proxy to the destination server from.",
+            "env_variable": "client_bindAddress",
+            "default_value": "0.0.0.0",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|ipv4",
+            "field_type": "text"
+        },
+        {
+            "name": "discord.enable",
+            "description": "Whether or not to enable the Discord bot.",
+            "env_variable": "discord_enable",
+            "default_value": "false",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        },
+        {
+            "name": "discord.token",
+            "description": "The Discord bot token",
+            "env_variable": "discord_token",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "string",
+            "field_type": "text"
+        },
+        {
+            "name": "discord.channelId",
+            "description": "The Discord channel id for managing the proxy through the Discord bot.",
+            "env_variable": "discord_channelId",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "string",
+            "field_type": "text"
+        },
+        {
+            "name": "discord.accountOwnerRoleId",
+            "description": "The Discord role id of the account owner role.",
+            "env_variable": "discord_accountOwnerRoleId",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "string",
+            "field_type": "text"
+        },
+        {
+            "name": "discord.notificationMentionRoleId",
+            "description": "The id of the Discord role to mention in important notifications.",
+            "env_variable": "discord_notificationMentionRoleId",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "string",
+            "field_type": "text"
+        },
+        {
+            "name": "discord.prefix",
+            "description": "The command prefix of the Discord bot.",
+            "env_variable": "discord_prefix",
+            "default_value": ".",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string",
+            "field_type": "text"
+        },
+        {
+            "name": "discord.chatRelay.enable",
+            "description": "Whether or not to enable the Discord chat relay. Requires the Discord bot to be enabled.",
+            "env_variable": "discord_chatRelay_enable",
+            "default_value": "false",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|in:true,false",
+            "field_type": "text"
+        },
+        {
+            "name": "discord.chatRelay.channelId",
+            "description": "The Discord channel id to use for the chat relay.",
+            "env_variable": "discord_chatRelay_channelId",
+            "default_value": "",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "string",
+            "field_type": "text"
+        }
+    ]
+}
